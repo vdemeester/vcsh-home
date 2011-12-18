@@ -1,2 +1,0 @@
-[$HOME/.config/vcsh/repo.d/zsh.git]
-checkout = vcsh clone git://github.com/RichiH/zshrc.git zsh
