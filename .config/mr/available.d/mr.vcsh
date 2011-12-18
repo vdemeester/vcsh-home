@@ -1,2 +1,3 @@
 [$HOME/.config/vcsh/repo.d/mr.git]
-checkout = vcsh clone git://nofau.lt/vincent/vcsh-home.git mr
+checkout = vcsh clone git@nofau.lt:vincent/vcsh-home.git mr
+push = vcsh run mr git push
