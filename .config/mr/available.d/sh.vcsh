@@ -1,0 +1,6 @@
+[$HOME/.config/vcsh/repo.d/sh-config.git]
+checkout = vcsh clone git@nofau.lt:vincent/sh-config.git sh-config
+update = vcsh run sh-config git pull
+push = vcsh run sh-config git push
+status = vcsh run sh-config git status
+gc = vcsh run sh-config git gc
