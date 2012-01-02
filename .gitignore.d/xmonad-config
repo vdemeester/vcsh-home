@@ -1,9 +1,0 @@
-*
-!.xmobarrc
-!.xmonad
-!.xmonad/lib
-!.xmonad/lib/Dzen.hs
-!.xmonad/lib/ScratchPadKeys.hs
-!.xmonad/lib/Utils.hs
-!.xmonad/xmonad.hs
-!.xmonad/xmonad.legacy.hs
