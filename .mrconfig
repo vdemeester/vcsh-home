@@ -2,5 +2,18 @@
 git_gc = git gc "$@"
 jobs = 5
 #include = cat /usr/share/mr/vcsh
+# We want to be sure that README{,.md} won't be checkout
+# 1. Test if core.sparseCheckout is true
+# 2. Write $GIT_DIR/info/sparse-checkout to ignore README files at checkout
+lib = if ! test `git config core.sparseCheckout` = "true"; then
+          git config core.sparseCheckout = true
+      fi
+lib = check_sparse_file () {
+          if ! test -e "$MR_REPO/info/sparse-checkout"; then
+              echo "*\n!README\n!README.md" > $MR_REPO/info/sparse-checkout
+          fi
+      }
+post_checkout = check_sparse_file
+post_update = check_sparse_file
 
 include = cat ~/.config/mr/config.d/*
