@@ -1,0 +1,37 @@
+
+                         __           __                            
+    .--.--..----..-----.|  |--.______|  |--..-----..--------..-----.
+    |  |  ||  __||__ --||     |______|     ||  _  ||        ||  -__|
+     \___/ |____||_____||__|__|      |__|__||_____||__|__|__||_____|
+
+
+vcsh "home" repository. This repository is used with [vcsh] [1] with the default
+directory layout, powered by [mr] [2].
+
+> vcsh allows you to have several git repositories, all maintaining their working
+> trees in $HOME without clobbering each other. That, in turn, means you can have
+> one repository per config set (zsh, vim, ssh, etc), picking and choosing which
+> configs you want to use on which machine.
+
+The default *enabled* repositories are mr (this one), sh (which contains the
+shell configuration [bash,zsh,…]) and vim.
+
+The convention I used is the following for the vcsh/mr configuration (`.vcsh`)
+is to omit the `-config` fo the filename, e.g. `sh` = `sh-config`, … 
+
+# Requirements
+
+You'll have to install [mr] [2] and [vcsh] [1]. On debian the packages are
+available for sid (and sooner or later in wheezy).
+
+    # apt-get install mr vcsh
+
+# Using it
+
+1. Clone it with vcsh : `vcsh clone git://github.com/vdemeester/vcsh-home.git mr`
+2. Choose the repositories you want to checkout by linking them in `config.d`
+3. Run mr to clone the repositories : `cd; mr update`
+4. You're done.
+
+[1]: https://github.com/RichiH/vcsh (vcsh)
+[2]: http://kitenet.net/~joey/code/mr/ (http://kitenet.net/~joey/code/mr/)
