@@ -24,7 +24,10 @@ is to omit the `-config` fo the filename, e.g. `sh` = `sh-config`, …
 You'll have to install [mr] [2] and [vcsh] [1]. On debian the packages are
 available for sid (and sooner or later in wheezy).
 
-    # apt-get install mr vcsh
+    # apt-get install mr # vcsh
+
+This repository currently depend on the `hook_support` branch of my vcsh fork
+on github. Maybe someday it'll be merged upstream.
 
 # Using it
 
