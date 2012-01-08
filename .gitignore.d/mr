@@ -11,6 +11,8 @@
 !.config/vcsh/hook.d/
 !.config/vcsh/hook.d/init/
 !.config/vcsh/hook.d/init/sparse-checkout
+!.config/vcsh/hook.d/pre-run/
+!.config/vcsh/hook.d/pre-run/sparse-checkout
 !.mrconfig
 !.gitignore.d
 !.gitignore.d/mr
