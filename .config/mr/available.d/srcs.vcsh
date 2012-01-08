@@ -1,4 +1,4 @@
-[$HOME/.config/vcsh/repo.d/mr.git]
+[$HOME/.config/vcsh/repo.d/srcs.git]
 checkout = vcsh clone git@nofau.lt:private/vincent/srcs.git srcs
 update = vcsh run mr git pull
 push = vcsh run mr git push
