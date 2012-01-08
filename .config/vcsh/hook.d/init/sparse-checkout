@@ -1,0 +1,13 @@
+# vcsh hook.d for enabling git sparse-checkout, and precisely, not checking out
+# README{,.md} files
+if ! test "$(git config core.sparseCheckout)" = "true"; then
+    git config core.sparseCheckout true
+fi
+if ! test -e "$GIT_DIR/info/sparse-checkout"; then
+    cat > $GIT_DIR/info/sparse-checkout << EOF
+*
+!README
+!README.md
+EOF
+fi
+#vim:filetype=sh autoindent expandtab shiftwidth=4
