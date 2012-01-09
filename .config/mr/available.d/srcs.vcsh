@@ -1,6 +1,6 @@
 [$HOME/.config/vcsh/repo.d/srcs.git]
 checkout = vcsh clone git@nofau.lt:private/vincent/srcs.git srcs
-update = vcsh run mr git pull
-push = vcsh run mr git push
-status = vcsh run mr git status
-gc = vcsh run mr git gc
+update = vcsh run srcs git pull
+push = vcsh run srcs git push
+status = vcsh run srcs git status
+gc = vcsh run srcs git gc
