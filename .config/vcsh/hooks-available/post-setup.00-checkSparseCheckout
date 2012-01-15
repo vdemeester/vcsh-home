@@ -1,0 +1,6 @@
+#!/bin/sh
+# vcsh hook for enabling git sparse-checkout
+if ! test "$(git config core.sparseCheckout)" = "true"; then
+    git config core.sparseCheckout true
+fi
+#vim:filetype=sh autoindent expandtab shiftwidth=4
