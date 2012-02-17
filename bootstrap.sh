@@ -46,8 +46,8 @@ chmod +x $HOOK_A/post-setup.00-checkSparseCheckout
 cat > $HOOK_A/post-setup.01-READMEsparseCheckout << HOOK
 #!/bin/sh
 # vcsh hook that set a default sparseCheckout for README{,.md}
-if ! test -e "$GIT_DIR/info/sparse-checkout"; then
-    cat > $GIT_DIR/info/sparse-checkout << EOF
+if ! test -e "\$GIT_DIR/info/sparse-checkout"; then
+    cat > \$GIT_DIR/info/sparse-checkout << EOF
 *
 !README
 !README.md
