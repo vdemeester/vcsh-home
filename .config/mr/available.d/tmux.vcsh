@@ -1,6 +1,0 @@
-[$HOME/.config/vcsh/repo.d/tmux-config.git]
-checkout = vcsh clone git@nofau.lt:vincent/tmux-config.git tmux-config
-update = vcsh run tmux-config git pull
-push = vcsh run tmux-config git push
-status = vcsh run tmux-config git status
-gc = vcsh run tmux-config git gc

@@ -1,6 +1,0 @@
-[$HOME/.config/vcsh/repo.d/haskell-config.git]
-checkout = vcsh clone git@nofau.lt:vincent/haskell-config.git haskell-config
-update = vcsh run haskell-config git pull
-push = vcsh run haskell-config git push
-status = vcsh run haskell-config git status
-gc = vcsh run haskell-config git gc

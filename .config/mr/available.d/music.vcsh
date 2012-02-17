@@ -1,6 +1,0 @@
-[$HOME/.config/vcsh/repo.d/music-config.git]
-checkout = vcsh clone git@nofau.lt:vincent/music-config.git music-config
-update = vcsh run music-config git pull
-push = vcsh run music-config git push
-status = vcsh run music-config git status
-gc = vcsh run music-config git gc

@@ -1,6 +1,0 @@
-[$HOME/.config/vcsh/repo.d/scripts.git]
-checkout = vcsh clone git@nofau.lt:vincent/scripts.git scripts
-update = vcsh run scripts git pull
-push = vcsh run scripts git push
-status = vcsh run scripts git status
-gc = vcsh run scripts git gc

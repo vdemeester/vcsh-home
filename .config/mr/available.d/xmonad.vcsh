@@ -1,6 +1,0 @@
-[$HOME/.config/vcsh/repo.d/xmonad-config.git]
-checkout = vcsh clone git@nofau.lt:vincent/xmonad-config.git xmonad-config
-update = vcsh run xmonad-config git pull
-push = vcsh run xmonad-config git push
-status = vcsh run xmonad-config git status
-gc = vcsh run xmonad-config git gc

@@ -1,6 +1,0 @@
-[$HOME/.config/vcsh/repo.d/mail-config.git]
-checkout = vcsh clone git@nofau.lt:vincent/mail-config.git mail-config
-update = vcsh run mail-config git pull
-push = vcsh run mail-config git push
-status = vcsh run mail-config git status
-gc = vcsh run mail-config git gc
