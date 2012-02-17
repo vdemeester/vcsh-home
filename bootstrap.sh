@@ -35,13 +35,17 @@ fi
 # Write the vcsh hooks
 cat > $HOOK_A/post-setup.00-checkSparseCheckout << HOOK
 #!/bin/sh
-# mr vcsh post-setup hook
+# vcsh hook for enabling git sparse-checkout
 if ! test "$(git config core.sparseCheckout)" = "true"; then
     git config core.sparseCheckout true
 fi
+# vim: filetype=sh autoindent expandtab shiftwidth=4
 HOOK
 ln -s {$HOOK_A,$HOOK_D}/post-setup.00-checkSparseCheckout
+chmod +x $HOOK_A/post-setup.00-checkSparseCheckout
 cat > $HOOK_A/post-setup.01-READMEsparseCheckout << HOOK
+#!/bin/sh
+# vcsh hook that set a default sparseCheckout for README{,.md}
 if ! test -e "$GIT_DIR/info/sparse-checkout"; then
     cat > $GIT_DIR/info/sparse-checkout << EOF
 *
@@ -51,6 +55,7 @@ EOF
 fi
 HOOK
 ln -s {$HOOK_A,$HOOK_D}/post-setup.01-READMEsparseCheckout
+chmod +x $HOOK_A/post-setup.01-READMEsparseCheckout
 # go home !
 cd $HOME
 # an init it !
