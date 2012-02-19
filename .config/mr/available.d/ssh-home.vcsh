@@ -1,0 +1,6 @@
+[$HOME/.config/vcsh/repo.d/ssh-home.git]
+checkout = vcsh clone git@nofau.lt:private/vincent/ssh-home.git ssh-home
+update = vcsh run ssh-home git pull
+push = vcsh run ssh-home git push
+status = vcsh run ssh-home git status
+gc = vcsh run ssh-home git gc
