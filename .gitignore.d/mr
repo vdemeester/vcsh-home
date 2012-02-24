@@ -9,9 +9,7 @@
 !.config/mr/config.d/mr.vcsh
 !.config/vcsh
 !.config/vcsh/hooks-available
-!.config/vcsh/hooks-available/post-setup*
 !.config/vcsh/hooks-enabled
-!.config/vcsh/hooks-enabled/post-setup*
 !.mrconfig
 !.gitignore.d
 !.gitignore.d/mr
