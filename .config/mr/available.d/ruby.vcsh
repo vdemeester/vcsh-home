@@ -1,5 +1,5 @@
 [$HOME/.config/vcsh/repo.d/ruby-config.git]
-checkout = vcsh clone git@nofau.lt:vincent/ruby-config.git ruby-config
+checkout = vcsh clone git://nofau.lt/vincent/ruby-config.git ruby-config
 update = vcsh run ruby-config git pull
 push = vcsh run ruby-config git push
 status = vcsh run ruby-config git status

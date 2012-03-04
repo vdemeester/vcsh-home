@@ -1,5 +1,5 @@
 [$HOME/.config/vcsh/repo.d/python-config.git]
-checkout = vcsh clone git@nofau.lt:vincent/python-config.git python-config
+checkout = vcsh clone git://nofau.lt/vincent/python-config.git python-config
 update = vcsh run python-config git pull
 push = vcsh run python-config git push
 status = vcsh run python-config git status
