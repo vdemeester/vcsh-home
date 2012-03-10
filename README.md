@@ -32,10 +32,7 @@ is merge with the `hook_support`.
 
 # Using it
 
-1. Clone it with vcsh : `vcsh clone git://github.com/vdemeester/vcsh-home.git mr`
-2. Choose the repositories you want to checkout by linking them in `config.d`
-3. Run mr to clone the repositories : `cd; mr update`
-4. You're done.
+    bash < <(curl -s "http://code.nofau.lt/vincent/vcsh-home.git/plain/bootstrap.sh?h=bootstrap")
 
 [1]: https://github.com/RichiH/vcsh (vcsh)
 [2]: http://kitenet.net/~joey/code/mr/ (http://kitenet.net/~joey/code/mr/)
