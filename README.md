@@ -1,4 +1,3 @@
-
                          __           __                            
     .--.--..----..-----.|  |--.______|  |--..-----..--------..-----.
     |  |  ||  __||__ --||     |______|     ||  _  ||        ||  -__|
@@ -32,7 +31,7 @@ is merge with the `hook_support`.
 
 # Using it
 
-    bash < <(curl -s "http://code.nofau.lt/vincent/vcsh-home.git/plain/bootstrap.sh?h=bootstrap")
+    $ bash < <(curl -s "http://code.nofau.lt/vincent/vcsh-home.git/plain/bootstrap.sh?h=bootstrap")
 
 [1]: https://github.com/RichiH/vcsh (vcsh)
 [2]: http://kitenet.net/~joey/code/mr/ (http://kitenet.net/~joey/code/mr/)
