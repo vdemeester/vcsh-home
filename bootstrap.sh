@@ -54,8 +54,20 @@ if ! test -e "\$GIT_DIR/info/sparse-checkout"; then
 EOF
 fi
 HOOK
-ln -s {$HOOK_A,$HOOK_D}/post-setup.01-READMEsparseCheckout
 chmod +x $HOOK_A/post-setup.01-READMEsparseCheckout
+ln -s {$HOOK_A,$HOOK_D}/post-setup.01-READMEsparseCheckout
+cat > $HOOK_A/post-setup.01-GitignoresparseCheckout << HOOK
+#!/bin/sh
+# vcsh hook that set a default sparseCheckout for README{,.md}
+if ! test -e "\$GIT_DIR/info/sparse-checkout"; then
+    cat > \$GIT_DIR/info/sparse-checkout << EOF
+*
+!.gitignore
+EOF
+fi
+HOOK
+chmod +x $HOOK_A/post-setup.01-GitignoresparseCheckout
+ln -s {$HOOK_A,$HOOK_D}/post-setup.01-GetignoresparseCheckout
 # go home !
 cd $HOME
 # an init it !
