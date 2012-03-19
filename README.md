@@ -1,4 +1,3 @@
-
                          __           __                            
     .--.--..----..-----.|  |--.______|  |--..-----..--------..-----.
     |  |  ||  __||__ --||     |______|     ||  _  ||        ||  -__|
@@ -12,6 +11,7 @@ directory layout, powered by [mr] [2].
 > trees in $HOME without clobbering each other. That, in turn, means you can have
 > one repository per config set (zsh, vim, ssh, etc), picking and choosing which
 > configs you want to use on which machine.
+> <small>vcsh README file</small>
 
 The default *enabled* repositories are mr (this one), sh (which contains the
 shell configuration [bash,zsh,…]) and vim.
@@ -26,13 +26,16 @@ available for sid, wheezy and in the [squeeze-backports](http://backports-master
 
     # apt-get install -t squeeze-backports mr vcsh
 
-This repository currently depend on the `hook_support` branch of my vcsh fork
+<del>This repository currently depend on the `hook_support` branch of my vcsh fork
 on github. Maybe someday it'll be merged upstream. The master branch of my fork
-is merge with the `hook_support`.
+is merge with the `hook_support`.</del>
 
 # Using it
 
-    bash < <(curl -s "http://code.nofau.lt/vincent/vcsh-home.git/plain/bootstrap.sh?h=bootstrap")
+A branch is made for *bootstraping* the default configuration (with the vcsh hooks, etc…).
+If you like *on-liner command*, here is one for you.
+
+    $ bash < <(curl -s "http://code.nofau.lt/vincent/vcsh-home.git/plain/bootstrap.sh?h=bootstrap")
 
 [1]: https://github.com/RichiH/vcsh (vcsh)
 [2]: http://kitenet.net/~joey/code/mr/ (http://kitenet.net/~joey/code/mr/)
