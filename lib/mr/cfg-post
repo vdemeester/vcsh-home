@@ -1,0 +1,11 @@
+# -*- mode: sh -*-
+# Will call anything that is in $MR_REPO/.cfg-post.d
+fixups_append =
+    dir=.cfg-post.d
+    for f in "$MR_REPO/$dir"/*; do
+        if [ -x "$f" ]; then
+            info "Running $s ..."
+        else
+            error "$f is not executable ; can't run"
+        fi
+    done

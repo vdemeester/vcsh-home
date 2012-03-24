@@ -11,5 +11,8 @@
 !.config/vcsh/hooks-available
 !.config/vcsh/hooks-enabled
 !.mrconfig
+!lib
+!lib/mr
+!lib/mr/cfg-post
 !.gitignore.d
 !.gitignore.d/mr
