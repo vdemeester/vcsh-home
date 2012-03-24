@@ -16,7 +16,7 @@ include =
             echo # Neede in case file isn't terminated with a newline
         done
     }
-    for d in ~/lib/mr ~/.config/mr/config.d; do
+    for d in ~/lib/mr ~/.config/mr/config.d ~/.config/mr/groups.d; do
         if test -d "$d"; then
             include_files "$d"/*
         else
