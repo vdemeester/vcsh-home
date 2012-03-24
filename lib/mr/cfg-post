@@ -5,7 +5,5 @@ fixups_append =
     for f in "$MR_REPO/$dir"/*; do
         if [ -x "$f" ]; then
             info "Running $s ..."
-        else
-            error "$f is not executable ; can't run"
         fi
     done

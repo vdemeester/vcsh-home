@@ -1,6 +1,27 @@
+# -*- mode: sh -*-
+
 [DEFAULT]
 git_gc = git gc "$@"
 jobs = 5
 #include = cat /usr/share/mr/vcsh
+include =
+    include_files() {
+        for f in "$@"; do
+            case "$f" in
+                *.orig|*~) continue ;;
+            esac
+            \
+            echo "# INCLUDED FROM : $f"
+            cat "$f"
+            echo # Neede in case file isn't terminated with a newline
+        done
+    }
+    for d in ~/lib/mr ~/.config/mr/config.d; do
+        if test -d "$d"; then
+            include_files "$d"/*
+        else
+            echo "$d missing" >&2
+        fi
+    done
 
-include = cat ~/.config/mr/config.d/*
+# include = cat ~/.config/mr/config.d/*
