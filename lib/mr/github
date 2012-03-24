@@ -1,0 +1,10 @@
+# -*- mode: sh -*-
+# github related mr config
+lib =
+    [ -z "$GITHUB_USER" ] && GITHUB_USER="vdemeester"
+    github_url () {
+        echo "git://github.com/${GITHUB_USER}/${1:-${GITHUB_NAME:-$MR_NAME}}.git"
+    }
+    github_clone () {
+        git_clone `github_url`
+    }

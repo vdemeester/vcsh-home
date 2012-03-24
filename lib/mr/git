@@ -1,0 +1,48 @@
+# -*- mode: sh -*-
+# Git related mr lib
+lib =
+    check_repo_name () {
+        [ -n "$MR_NAME" ] || error "\$MR_NAME not set for $MR_REPO"
+    }
+    git_clone () {
+        check_repo_name
+        info "Cloning from $1"
+        git clone "$1" "$MR_REPO"
+        if test -n "$GIT_TAG"; then
+            git_tag_update
+        fi
+        if test -n "$GIT_HASH"; then
+            git_hash_update
+        fi
+    }
+    git_checkout () {
+        # FIXME: detect -b option and test if branch already exists
+        cd $MR_REPO && git checkout "$@"
+    }
+    git_tag_update () {
+        git_checkout "$GIT_TAG" -B "mr_tag/$GIT_TAG"
+    }
+    git_hash_update () {
+        git_checkout "$GIT_HASH" -B "mr_hash/$GIT_HASH"
+    }
+
+# Remove git detection for a few case
+git_test        = test -d "${MR_REPO}/.git" &&
+    test -n "${GIT_HASH}" &&
+    test -n "${GIT_TAG}"
+
+# support for checking out a tag
+git_tag_test     = test -n "$GIT_TAG"
+git_tag_update   = git_tag_update
+git_tag_commit   = git_commit
+git_tag_diff     = git_diff
+git_tag_log      = git_log
+git_tag_status   = git_status
+
+# support for checking out a hash
+git_hash_test = test -n "$GIT_HASH"
+git_hash_update   = git_hash_update
+git_hash_commit   = git_commit
+git_hash_diff     = git_diff
+git_hash_log      = git_log
+git_hash_status   = git_status
