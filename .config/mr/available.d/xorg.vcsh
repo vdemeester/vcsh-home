@@ -1,6 +1,3 @@
 [$HOME/.config/vcsh/repo.d/xorg-config.git]
-checkout = vcsh clone git://nofau.lt/vincent/xorg-config.git xorg-config
-update = vcsh run xorg-config git pull
-push = vcsh run xorg-config git push
-status = vcsh run xorg-config git status
-gc = vcsh run xorg-config git gc
+lib = VCSH_NAME="xorg-config"
+include = cat $HOME/lib/vcsh/mr

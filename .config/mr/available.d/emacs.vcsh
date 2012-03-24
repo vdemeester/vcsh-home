@@ -1,6 +1,3 @@
 [$HOME/.config/vcsh/repo.d/emacs-config.git]
-checkout = vcsh clone git://nofau.lt/vincent/emacs-config.git emacs-config
-update = vcsh run emacs-config git pull
-push = vcsh run emacs-config git push
-status = vcsh run emacs-config git status
-gc = vcsh run emacs-config git gc
+lib = VCSH_NAME="emacs-config"
+include = cat $HOME/lib/vcsh/mr

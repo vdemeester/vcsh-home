@@ -1,6 +1,3 @@
 [$HOME/.config/vcsh/repo.d/vim-config.git]
-checkout = vcsh clone git://nofau.lt/vincent/vim-config.git vim-config
-update = vcsh run vim-config git pull
-push = vcsh run vim-config git push
-status = vcsh run vim-config git status
-gc = vcsh run vim-config git gc
+lib = VCSH_NAME="vim-config"
+include = cat $HOME/lib/vcsh/mr

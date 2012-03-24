@@ -1,6 +1,3 @@
 [$HOME/.config/vcsh/repo.d/python-config.git]
-checkout = vcsh clone git://nofau.lt/vincent/python-config.git python-config
-update = vcsh run python-config git pull
-push = vcsh run python-config git push
-status = vcsh run python-config git status
-gc = vcsh run python-config git gc
+lib = VCSH_NAME="python-config"
+include = cat $HOME/lib/vcsh/mr
