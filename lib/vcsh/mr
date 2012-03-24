@@ -31,9 +31,19 @@ lib =
         check_vcsh_name
         vcsh run "${VCSH_NAME}" git gc
     }
+    vcsh_cfg_post_d () {
+        check_vcsh_name
+        dir=${HOME}/.cfg-post.d
+        # Run .cfg-post.d/${MR_REPO}.*
+        for f in `find ${dir} -executable -type f -iname ${VCSH_NAME}`; do
+            echo "Running $f"
+            "$f"
+        done
+    }
 
 checkout = vcsh_git_clone
 update = vcsh_git_update
 push = vcsh_git_push
 status = vcsh_git_status
 gc = vcsh_git_gc
+fixups_append = vcsh_cfg_post_d
