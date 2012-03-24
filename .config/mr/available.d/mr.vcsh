@@ -1,6 +1,0 @@
-[$HOME/.config/vcsh/repo.d/mr.git]
-checkout = vcsh clone git://nofau.lt/vincent/vcsh-home.git mr
-update = vcsh run mr git pull
-push = vcsh run mr git push
-status = vcsh run mr git status
-gc = vcsh run mr git gc

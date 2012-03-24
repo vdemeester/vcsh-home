@@ -4,9 +4,8 @@
 !.config/mr/*
 !.config/mr/available.d
 !.config/mr/available.d/*
-!.config/mr/available.d/mr.vcsh
-!.config/mr/available.d/zsh.vcsh
-!.config/mr/config.d/mr.vcsh
+!.config/mr/config.d/sh.vcsh
+!.config/mr/config.d/vcsh-home.vcsh
 !.config/vcsh
 !.config/vcsh/hooks-available
 !.config/vcsh/hooks-enabled
@@ -14,5 +13,7 @@
 !lib
 !lib/mr
 !lib/mr/cfg-post
+!lib/vcsh
+!lib/vcsh/mr
 !.gitignore.d
-!.gitignore.d/mr
+!.gitignore.d/vcsh-home
