@@ -1,0 +1,39 @@
+# -*- mode: sh -*-
+# This is my "personal" vcsh lib file
+lib =
+    # First initial default value
+    [ -z "VCSH_UPSTREAM_HOST" ] && VCSH_UPSTREAM_HOST="nofau.lt"
+    [ -z "VCSH_UPSTREAM_PATH" ] && VCSH_UPSTREAM_HOST="vincent"
+    check_vcsh_name () {
+        [ -n "${VCSH_NAME}" ] || error "\$VCSH_NAME not set for $MR_REPO"
+    }
+    vcsh_git_clone () {
+        check_vcsh_name
+        if test -n "GIT_PROTOCOL"; then
+            GIT_PROTOCOL="git://"
+        fi
+        VCSH_GIT_CLONE_PATH="${GIT_PROTOCOL}${VCSH_UPSTREAM_HOST}/${VCSH_UPSTREAM_PATH}/${VCSH_NAME}.git"
+        vcsh clone "${VCSH_GIT_CLONE_PATH}" "${VCSH_NAME}"
+    }
+    vcsh_git_update () {
+        check_vcsh_name
+        vcsh run "${VCSH_NAME}" git pull
+    }
+    vcsh_git_push () {
+        check_vcsh_name
+        vcsh run "${VCSH_NAME}" git push
+    }
+    vcsh_git_status () {
+        check_vcsh_name
+        vcsh run "${VCSH_NAME}" git status
+    }
+    vcsh_git_gc () {
+        check_vcsh_name
+        vcsh run "${VCSH_NAME}" git gc
+    }
+
+checkout = vcsh_git_clone
+update = vcsh_git_update
+push = vcsh_git_push
+status = vcsh_git_status
+gc = vcsh_git_gc
