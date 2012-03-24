@@ -12,8 +12,8 @@
 !.mrconfig
 !lib
 !lib/mr
-!lib/mr/cfg-post
+!lib/mr/*
 !lib/vcsh
-!lib/vcsh/mr
+!lib/vcsh/*
 !.gitignore.d
 !.gitignore.d/vcsh-home
