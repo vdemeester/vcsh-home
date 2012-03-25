@@ -27,9 +27,9 @@ lib =
     }
 
 # Remove git detection for a few case
-git_test        = test -d "${MR_REPO}/.git" &&
-    test -n "${GIT_HASH}" &&
-    test -n "${GIT_TAG}"
+git_test = test -d "${MR_REPO}/.git" &&
+        test -z "${GIT_HASH}" && 
+        test -z "${GIT_TAG}"
 
 # support for checking out a tag
 git_tag_test     = test -n "$GIT_TAG"
