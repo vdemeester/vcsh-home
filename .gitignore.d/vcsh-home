@@ -5,6 +5,7 @@
 !.config/mr/available.d
 !.config/mr/available.d/*
 !.config/mr/config.d/sh.vcsh
+!.config/mr/config.d/ssh.vcsh
 !.config/mr/config.d/vcsh-home.vcsh
 !.config/vcsh
 !.config/vcsh/hooks-available
