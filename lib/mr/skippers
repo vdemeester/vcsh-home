@@ -1,0 +1,40 @@
+# -*- mode: sh -*-
+
+lib =
+    debug_skippers () {
+        check_repo_name
+        if [ -n "$MR_DEBUG_SKIP" ]; then
+            echo "# SKIP $MR_NAME? $*"
+        fi
+    }
+    missing_exe () {
+        if which "$1" >/dev/null 2>&1; then
+            debug_skippers ". Found $1 in \$PATH"
+            return 1 # false
+        else
+            debug_skippers "! Didn't find $1 in \$PATH"
+            return 0 # true
+        fi
+    }
+    #
+    missing_file () {
+        if [ -f "$1" ]; then
+            debug_skippers ". Found $1"
+            return 1 # false
+        else
+            debug_skippers "! Didn't find $1"
+            return 0 # true
+        fi
+    }
+    #
+    missing_dir () {
+        if [ -d "$1" ]; then
+            debug_skippers ". Found $1"
+            return 1 # false
+        else
+            debug_skippers "! Didn't find $1"
+            return 0 # true
+        fi
+    }
+
+# TODO: Write some default skipper
