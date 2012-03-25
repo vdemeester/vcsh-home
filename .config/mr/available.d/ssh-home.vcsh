@@ -1,3 +1,0 @@
-[$HOME/.config/vcsh/repo.d/ssh-home.git]
-lib = VCSH_NAME="ssh-home"
-include = cat $HOME/lib/vcsh/mr
