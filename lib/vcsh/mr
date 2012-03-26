@@ -3,7 +3,7 @@
 lib =
     # First initial default value
     [ -z "$VCSH_UPSTREAM_HOST" ] && VCSH_UPSTREAM_HOST="nofau.lt"
-    [ -z "$VCSH_UPSTREAM_PATH" ] && VCSH_UPSTREAM_HOST="vincent"
+    [ -z "$VCSH_UPSTREAM_PATH" ] && VCSH_UPSTREAM_PATH="vincent"
     check_vcsh_name () {
         [ -n "${VCSH_NAME}" ] || error "\$VCSH_NAME not set for $MR_REPO"
     }
@@ -13,6 +13,7 @@ lib =
             GIT_PROTOCOL="git://"
         fi
         VCSH_GIT_CLONE_PATH="${GIT_PROTOCOL}${VCSH_UPSTREAM_HOST}/${VCSH_UPSTREAM_PATH}/${VCSH_NAME}.git"
+        echo "vcsh clone \"${VCSH_GIT_CLONE_PATH}\" \"${VCSH_NAME}\""
         vcsh clone "${VCSH_GIT_CLONE_PATH}" "${VCSH_NAME}"
     }
     vcsh_git_update () {
