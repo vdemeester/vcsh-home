@@ -1,0 +1,5 @@
+[$HOME/.config/vcsh/repo.d/work-config.git]
+lib = VCSH_NAME="work-config"
+    VCSH_UPSTREAM_HOST=10.0.8.42
+    GIT_PROTOCOL="ssh://"
+include = cat $HOME/lib/vcsh/mr
