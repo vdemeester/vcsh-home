@@ -20,9 +20,11 @@ lib =
         cd $MR_REPO && git checkout "$@"
     }
     git_tag_update () {
+        git fetch
         git_checkout "$GIT_TAG" -B "mr_tag/$GIT_TAG"
     }
     git_hash_update () {
+        git fetch
         git_checkout "$GIT_HASH" -B "mr_hash/$GIT_HASH"
     }
 
