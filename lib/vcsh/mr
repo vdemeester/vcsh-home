@@ -47,4 +47,5 @@ update = vcsh_git_update
 push = vcsh_git_push
 status = vcsh_git_status
 gc = vcsh_git_gc
-fixups_append = vcsh_cfg_post_d
+fixups = vcsh_cfg_post_d
+order = 9
