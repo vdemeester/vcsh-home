@@ -36,15 +36,15 @@ git_test = test -d "${MR_REPO}/.git" &&
 # support for checking out a tag
 git_tag_test     = test -n "$GIT_TAG"
 git_tag_update   = git_tag_update
-git_tag_commit   = git_commit
-git_tag_diff     = git_diff
-git_tag_log      = git_log
-git_tag_status   = git_status
+git_tag_commit   = false
+git_tag_diff     = git diff
+git_tag_log      = false
+git_tag_status   = git status
 
 # support for checking out a hash
 git_hash_test = test -n "$GIT_HASH"
 git_hash_update   = git_hash_update
-git_hash_commit   = git_commit
-git_hash_diff     = git_diff
-git_hash_log      = git_log
-git_hash_status   = git_status
+git_hash_commit   = false
+git_hash_diff     = git diff
+git_hash_log      = false
+git_hash_status   = git status

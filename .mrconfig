@@ -33,7 +33,7 @@ include =
         fi
     done
     # Finally load the groups
-    for d in ~/lib/mr ~/.config/mr/config.d ~/.config/mr/groups.d; do
+    for d in ~/.config/mr/groups.d; do
         if test -d "$d"; then
             include_files "$d"/*
         else
@@ -42,3 +42,4 @@ include =
     done
 
 # include = cat ~/.config/mr/config.d/*
+#vim: syntax=sh
