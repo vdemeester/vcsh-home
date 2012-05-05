@@ -48,3 +48,9 @@ git_hash_commit   = false
 git_hash_diff     = git diff
 git_hash_log      = false
 git_hash_status   = git status
+
+# Adds to git
+git_wip =
+    git branch -v -v
+    git status -s
+git_wip_skip = ! git wip

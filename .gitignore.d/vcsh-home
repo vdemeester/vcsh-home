@@ -11,6 +11,8 @@
 !.config/vcsh/hooks-available
 !.config/vcsh/hooks-enabled
 !.mrconfig
+!bin
+!bin/mrwrap
 !lib
 !lib/mr
 !lib/mr/*
