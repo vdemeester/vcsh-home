@@ -8,3 +8,5 @@ lib =
     github_clone () {
         git_clone `github_url`
     }
+
+# vim:filetype=sh foldmethod=marker expandtab shiftwidth=4
