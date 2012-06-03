@@ -7,6 +7,8 @@
 !.config/mr/config.d/sh.vcsh
 !.config/mr/config.d/ssh.vcsh
 !.config/mr/config.d/vcsh-home.vcsh
+!.config/mr/groups.d
+!.config/mr/groups.d/github-installable
 !.config/vcsh
 !.config/vcsh/hooks-available
 !.config/vcsh/hooks-enabled
