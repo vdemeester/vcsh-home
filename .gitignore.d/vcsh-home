@@ -15,6 +15,7 @@
 !.mrconfig
 !bin
 !bin/mrwrap
+!bin/pytee.py
 !lib
 !lib/mr
 !lib/mr/*

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-mr "$@" 2>&1 | pytee \
+mr "$@" 2>&1 | pytee.py \
         --regex '^mr (status|update|push): /' \
         --regex '^(Everything|Already) up-to-date' \
         --regex '^\s*$'
