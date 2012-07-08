@@ -35,7 +35,7 @@ is merge with the `hook_support`.</del>
 A branch is made for *bootstraping* the default configuration (with the vcsh hooks, etc…).
 If you like *on-liner command*, here is one for you.
 
-    $ bash < <(curl -s "http://code.nofau.lt/vincent/vcsh-home.git/plain/bootstrap.sh?h=bootstrap")
+    $ bash < <(curl -s "https://raw.github.com/vdemeester/vcsh-home/bootstrap/bootstrap.sh")
 
 [1]: https://github.com/RichiH/vcsh (vcsh)
 [2]: http://kitenet.net/~joey/code/mr/ (http://kitenet.net/~joey/code/mr/)
