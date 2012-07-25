@@ -1,7 +1,7 @@
 #!/bin/sh
 # {{{ crontab
 crontab_cfg_post_d() {
-    local confdir=$HOME/.config/cron/
+    local confdir=$HOME/.config/cron
     local confsubdir=$confdir/cron.d
     local config=$confdir/crontab
 
