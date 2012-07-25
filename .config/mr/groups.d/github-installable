@@ -9,7 +9,7 @@ fixups = PREFIX=$HOME ./install.sh
 skip = missing_exe rbenv
 [src/github/apenwarr/git-subtree]
 fixups = sudo make install
-skip = missing_exe git
+deleted = true
 [src/github/michaelklishin/git-wtf]
 fixups = make && sudo make install
 skip = missing_exe git
@@ -21,19 +21,4 @@ fixups = cp ./spark $HOME/bin/
 fixups = cp ./bin/lein $HOME/bin/
 [src/github/kennethreitz/autoenv]
 fixups=cp ./activate.sh $HOME/.sh/hook/shenv.post/autoenv
-#[src/github/sonatype/mvnsh]
-#fixups = test -d $HOME/lib/sonaty-mvnsh/
-# }}}
-
-[src/github/aspiers/shell-env]
-fixups = true
-[src/github/RichiH/vcsh]
-[src/github/rraptorr/sun-java6]
-[src/github/yyuu/sun-java7]
-# zsh stuff
-[src/github/zsh-users/zsh-history-substring-search]
-[src/github/zsh-users/zsh-syntax-highlighting]
-[src/github/zsh-users/zaw]
-[src/github/zsh-users/zsh-completions]
-
 # vim:filetype=sh foldmethod=marker expandtab shiftwidth=4
