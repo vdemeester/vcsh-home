@@ -40,6 +40,10 @@ lib =
             echo "Running $f"
             "$f"
         done
+        # Run the vcsh-home cfg-post.d script (for cron, ...)
+        if test -x "${dir}/vcsh-home"; then
+            "${dir}/vcsh-home"
+        fi
     }
 
 checkout = vcsh_git_clone
@@ -49,3 +53,4 @@ status = vcsh_git_status
 gc = vcsh_git_gc
 fixups = vcsh_cfg_post_d
 order = 9
+# vim:filetype=sh foldmethod=marker autoindent

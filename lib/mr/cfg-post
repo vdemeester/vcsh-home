@@ -7,3 +7,4 @@ fixups_append =
             info "Running $s ..."
         fi
     done
+# vim:filetype=sh foldmethod=marker autoindent

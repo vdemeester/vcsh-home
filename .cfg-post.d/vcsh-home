@@ -1,0 +1,26 @@
+#!/bin/sh
+# {{{ crontab
+crontab_cfg_post_d() {
+    local confdir=$HOME/.config/cron/
+    local confsubdir=$confdir/cron.d
+    local config=$confdir/crontab
+
+    test -d $confsubdir || mkdir -p $confsubdir
+
+    # ZDOTDIR should always be set
+    . "$ZDOTDIR/lib/libhooks.sh"
+
+    # Rebuild $config
+    rebuild_config "$config" "${confsubdir#$HOME/}"
+
+    # Put it into crontab
+    if ( echo; cat "$config" ) | crontab -; then
+        echo "Reinstalled user's crontab"
+    else
+        echo "WARNING: Failed to reinstall user's crontab" >&2
+        exit 1
+    fi
+}
+# }}}
+crontab_cfg_post_d
+# vim:filetype=sh foldmethod=marker
