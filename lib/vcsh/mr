@@ -42,6 +42,7 @@ lib =
         done
         # Run the vcsh-home cfg-post.d script (for cron, ...)
         if test -x "${dir}/vcsh-home"; then
+            echo "Running ${dir}/vcsh-home"
             "${dir}/vcsh-home"
         fi
     }
