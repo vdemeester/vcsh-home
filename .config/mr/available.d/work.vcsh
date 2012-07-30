@@ -1,6 +1,6 @@
 [$HOME/.config/vcsh/repo.d/work-config.git]
 lib = VCSH_NAME="work-config"
-    VCSH_UPSTREAM_HOST=git@10.0.8.42
+    VCSH_UPSTREAM_HOST=git@git.xgbi.fr
     VCSH_UPSTREAM_PATH=private/vincent
     GIT_PROTOCOL="ssh://"
 include = cat $HOME/lib/vcsh/mr
