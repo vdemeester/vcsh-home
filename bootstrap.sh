@@ -71,4 +71,4 @@ ln -s {$HOOK_A,$HOOK_D}/post-setup.01-GetignoresparseCheckout
 # go home !
 cd $HOME
 # an init it !
-vcsh clone git://nofau.lt/vincent/vcsh-home.git mr
+vcsh clone git://nofau.lt/vincent/vcsh-home.git vcsh-home
