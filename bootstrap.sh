@@ -1,74 +1,152 @@
-#/bin/sh
-# vcsh-home bootstrap file
+#!/bin/sh
+# This is my *vcsh-home* bootstrap file. 
+# To make a long story short, this script will initialize my home directory 
+# with share configuration in a new machine.
+#
+# Behind the scene, there is three required peice of software (available from
+# debian repository, etc) :
+#
+# * git
+# * vcsh
+# * mr
+#
+# I use git for eveything, even my documents, pictures or music library. But
+# for these, you will need git-annex too.
+#
+# This script need user input for customizing workflow and getting private 
+# stuff.
+#
 SELF="$(basename $0)"
 
-check_cmds() {
-# TODO: test if on debian or not
-# test if command available
-command -v git || {
-    echo "$SELF: git is not available."
-    exit 1
-}
-command -v vcsh || {
-    echo "$SELF: vcsh is not available."
-    exit 1
-}
-command -v mr || {
-    echo "$SELF: mr is not available"
-    exit 1
-}
-# TODO: test if command on apt (mainly vcsh version number)
-}
+# The most important line in any shell program.
+set -e
 
-check_cmds git mr vcsh
+# We will start by defining few useful functions.
+#
+# *log*: a wrapper of echo to print stuff in a more colorful way
+log() {
+    ECHO_ARGS=""
+    test "$1" = "-n" && {
+        ECHO_ARGS="-n"
+        shift
+    }
+    echo $ECHO_ARGS "$(tput sgr0)$(tput setaf 2)>$(tput bold)>$(tput sgr0) $*"
+}
+# *warn*: a wrapper of echo to print stuff in a more colorful way, warning
+warn() {
+    test "$1" = "-n" && {
+        ECHO_ARGS="-n"
+        shift
+    }
+    echo $ECHO_ARGS "$(tput sgr0)$(tput setaf 3)<$(tput bold)<$(tput sgr0) $*"
+}
+# *check_cmd* : check a command and fail if not present
+check_cmd() {
+    command -v $1 >/dev/null && {
+        echo "   $1"
+    } || {
+        echo ""
+        warn "$1 is not available"
+        echo
+        exit 1
+    }
+}
+# First, we check the precense of essential tools (git, vcsh, mr)
+log "Checking needed commands :$(tput bold)"
+check_cmd git
+check_cmd mr
+check_cmd vcsh
 
+# Next, we'll prepare for the initial bootstrap. It is basically :
+# * Look at ``HOOK_D`` and ``HOOK_A`` variable if already defined
 test -z "$HOOK_D" && HOOK_D=$HOME/.config/vcsh/hooks-enabled
 test -z "$HOOK_A" && HOOK_A=$HOME/.config/vcsh/hooks-available
-
-if ! test -d $HOOK_D; then
-    mkdir -p $HOOK_D
-fi
-if ! test -d $HOOK_A; then
-    mkdir -p $HOOK_A
-fi
-
-# Write the vcsh hooks
-cat > $HOOK_A/post-setup.00-checkSparseCheckout << HOOK
+log "Preparing bootstrap:\n   Available hooks : $HOOK_A\n   Enabled hooks   : $HOOK_D"
+# * Create folder if not present
+test -d $HOOK_D || mkdir -p $HOOK_D
+test -d $HOOK_A || mkdir -p $HOOK_A
+# * Write initial vcsh hooks (to enable sparseCheckout and to ignore README)
+log "Writing initial hooks: $(tput bold)"
+# vcsh hook for enabling [sparseCheckout](http://www.kernel.org/pub/software/scm/git/docs/git-read-tree.html#_sparse_checkout).
+# > "Sparse checkout" allows populating the working directory sparsely. It uses the skip-worktree bit (see git-update-index(1)) to tell Git whether a file in the working directory is worth looking at.
+#
+# This is very useful for the vcsh-enabled repository. I can document them with
+# a README file so that other people can know what it does, but I don't want
+# them to conflict when beeing used.
+name="post-setup.00-checkSparseCheckout"
+cat > $HOOK_A/$name << HOOK
 #!/bin/sh
-# vcsh hook for enabling git sparse-checkout
-if ! test "$(git config core.sparseCheckout)" = "true"; then
+if ! test "\$(git config core.sparseCheckout)" = "true"; then
     git config core.sparseCheckout true
 fi
-# vim: filetype=sh autoindent expandtab shiftwidth=4
 HOOK
-ln -s {$HOOK_A,$HOOK_D}/post-setup.00-checkSparseCheckout
-chmod +x $HOOK_A/post-setup.00-checkSparseCheckout
-cat > $HOOK_A/post-setup.01-READMEsparseCheckout << HOOK
+ln -s $HOOK_A/$name $HOOK_D/$name
+chmod +x $HOOK_A/$name
+echo "   $name"
+# vcsh hook for excluding README{,.md} using git sparseCheckout
+name="post-setup.01-defaultsparsecheckout"
+cat > $HOOK_A/$name << HOOK
 #!/bin/sh
-# vcsh hook that set a default sparseCheckout for README{,.md}
-if ! test -e "\$GIT_DIR/info/sparse-checkout"; then
-    cat > \$GIT_DIR/info/sparse-checkout << EOF
+if ! test $(grep $name \$GIT_DIR/info/sparse-checkout); then
+    cat >> \$GIT_DIR/info/sparse-checkout << EOF
+#/ from $name
 *
+EOF
+fi
+HOOK
+chmod +x $HOOK_A/$name
+ln -s $HOOK_A/$name $HOOK_D/$name
+echo "   $name"
+# vcsh hook for excluding README{,.md} using git sparseCheckout
+name="post-setup.01-READMEsparseCheckout"
+cat > $HOOK_A/$name << HOOK
+#!/bin/sh
+if ! test $(grep $name \$GIT_DIR/info/sparse-checkout); then
+    cat >> \$GIT_DIR/info/sparse-checkout << EOF
+#/ from $name
 !README
 !README.md
 EOF
 fi
 HOOK
-chmod +x $HOOK_A/post-setup.01-READMEsparseCheckout
-ln -s {$HOOK_A,$HOOK_D}/post-setup.01-READMEsparseCheckout
-cat > $HOOK_A/post-setup.01-GitignoresparseCheckout << HOOK
+chmod +x $HOOK_A/$name
+ln -s $HOOK_A,/$name $HOOK_D/$name
+echo "   $name"
+# vcsh hook for excluding .gitignore using git sparseCheckout
+name="post-setup.01-GitignoresparseCheckout"
+cat > $HOOK_A/$name << HOOK
 #!/bin/sh
-# vcsh hook that set a default sparseCheckout for README{,.md}
-if ! test -e "\$GIT_DIR/info/sparse-checkout"; then
-    cat > \$GIT_DIR/info/sparse-checkout << EOF
-*
+if ! test $(grep $name \$GIT_DIR/info/sparse-checkout); then
+    cat >> \$GIT_DIR/info/sparse-checkout << EOF
+#/ from $name
 !.gitignore
 EOF
 fi
 HOOK
-chmod +x $HOOK_A/post-setup.01-GitignoresparseCheckout
-ln -s {$HOOK_A,$HOOK_D}/post-setup.01-GetignoresparseCheckout
-# go home !
-cd $HOME
-# an init it !
+chmod +x $HOOK_A/$name
+ln -s $HOOK_A/$name $HOOK_D/$name
+echo "   $name"
+echo "$(tput sgr0)"
+# * Clone the vcsh-home repository
+log "Cloning vcsh-home"
 vcsh clone git://nofau.lt/vincent/vcsh-home.git vcsh-home
+
+# Running mr in interactive mode on the most important one
+log "Getting sh-config first"
+mr -i -d .config/vcsh/repo.d/sh-config.git u
+
+# Ask for _enable right now_ repository
+log "Additionnal configuration (name separated by space)$(tput bold)"
+read ADDITIONNALS
+for file in $ADDITIONNALS; do
+    if test -f $HOME/.config/mr/available.d/$f; then
+        ln -s $HOME/.config/mr/available.d/$f $HOME/.config/mr/config.d/$f
+    else
+        echo "   skipping $f"
+    fi
+done
+# Update in a new shell (benefits the sh-config)
+log "Updating everything in a new shell: $SHELL"
+$SHELL -c "mr -i -d .config u"
+# Explain the user how to add configurations
+log "That's it, you're home is now configured. \n You can add or remove configuration using vcsh and ˇˇ$HOME/.config/mr/config.dˇˇ folder."
