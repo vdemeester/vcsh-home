@@ -139,12 +139,23 @@ mr -i -d .config/vcsh/repo.d/sh-config.git u
 log "Additionnal configuration (name separated by space)$(tput bold)"
 read ADDITIONNALS
 for file in $ADDITIONNALS; do
-    if test -f $HOME/.config/mr/available.d/$f; then
-        ln -s $HOME/.config/mr/available.d/$f $HOME/.config/mr/config.d/$f
+    if test -f $HOME/.config/mr/available.d/$f.vcsh; then
+        ln -s $HOME/.config/mr/available.d/$f.vcsh $HOME/.config/mr/config.d/$f.vcsh
     else
         echo "   skipping $f"
     fi
 done
+# Ask for private repository
+log "Private config repository (name separated by space)$(tput bold)"
+read PRIVATE
+cat > $HOME/.config/mr/available.d/private.vcsh << EOF
+[\$HOME/.config/vcsh/repo.d/private-config.git]
+lib = VCSH_NAME="private-config"
+    VCSH_UPSTREAM_PATH="private/vincent"
+    GIT_PROTOCOL=ssh://
+include = cat $HOME/lib/vcsh/mr
+EOF
+ln -s $HOME/.config/mr/available.d/private.vcsh $HOME/.config/mr/config.d/private.vcsh
 # Update in a new shell (benefits the sh-config)
 log "Updating everything in a new shell: $SHELL"
 $SHELL -c "mr -i -d .config u"
