@@ -1,0 +1,4 @@
+#!/bin/sh
+# mr wrapper update config
+mrc $1 update
+

@@ -1,0 +1,3 @@
+#!/bin/sh
+# mr wrapper config status
+mrc status
