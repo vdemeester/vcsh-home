@@ -1,0 +1,5 @@
+#!/bin/sh
+# simple mr wrapper that source keychain before running
+# Useful for cron scripts
+. $HOME/.keychain/$(hostname)-sh
+mr "$@"

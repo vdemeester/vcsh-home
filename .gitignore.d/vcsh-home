@@ -16,6 +16,7 @@
 !bin/mrwrap
 !bin/pytee.py
 !bin/mrc*
+!bin/mrw
 !bin/cronhelper.sh
 !bin/alarm.rb
 !lib
