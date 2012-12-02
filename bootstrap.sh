@@ -110,7 +110,7 @@ EOF
 fi
 HOOK
 chmod +x $HOOK_A/$name
-ln -s $HOOK_A,/$name $HOOK_D/$name
+ln -s $HOOK_A/$name $HOOK_D/$name
 echo "   $name"
 # vcsh hook for excluding .gitignore using git sparseCheckout
 name="post-setup.01-GitignoresparseCheckout"
