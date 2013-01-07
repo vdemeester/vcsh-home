@@ -12,7 +12,12 @@ lib =
         if test -z "$GIT_PROTOCOL"; then
             GIT_PROTOCOL="git://"
         fi
-        VCSH_GIT_CLONE_PATH="${GIT_PROTOCOL}${VCSH_UPSTREAM_HOST}/${VCSH_UPSTREAM_PATH}/${VCSH_NAME}.git"
+	git ls-remote "config:${VCSH_NAME}.git" &>-
+	if test "$?" -ne 0; then
+	    VCSH_GIT_CLONE_PATH="config:${VCSH_NAME}.git"
+	else
+            VCSH_GIT_CLONE_PATH="${GIT_PROTOCOL}${VCSH_UPSTREAM_HOST}/${VCSH_UPSTREAM_PATH}/${VCSH_NAME}.git"
+	fi
         echo "vcsh clone \"${VCSH_GIT_CLONE_PATH}\" \"${VCSH_NAME}\""
         vcsh clone "${VCSH_GIT_CLONE_PATH}" "${VCSH_NAME}"
     }
