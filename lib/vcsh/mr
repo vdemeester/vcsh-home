@@ -2,8 +2,8 @@
 # This is my "personal" vcsh lib file
 lib =
     # First initial default value
-    [ -z "$VCSH_UPSTREAM_HOST" ] && VCSH_UPSTREAM_HOST="nofau.lt"
-    [ -z "$VCSH_UPSTREAM_PATH" ] && VCSH_UPSTREAM_PATH="vincent"
+    [ -z "$VCSH_UPSTREAM_HOST" ] && VCSH_UPSTREAM_HOST="github.com"
+    [ -z "$VCSH_UPSTREAM_PATH" ] && VCSH_UPSTREAM_PATH="vdemeester"
     check_vcsh_name () {
         [ -n "${VCSH_NAME}" ] || error "\$VCSH_NAME not set for $MR_REPO"
     }
