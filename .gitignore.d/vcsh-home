@@ -24,6 +24,8 @@
 !lib/mr/*
 !lib/vcsh
 !lib/vcsh/*
+!usr
+!usr/*/.placeholder
 !.cfg-post.d
 !.cfg-post.d/.placeholder
 !.gitignore.d
