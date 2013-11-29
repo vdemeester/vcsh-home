@@ -1,3 +1,0 @@
-[$HOME/.config/vcsh/repo.d/git-config.git]
-lib = VCSH_NAME="git-config"
-include = cat $HOME/lib/vcsh/mr

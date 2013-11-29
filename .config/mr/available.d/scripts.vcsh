@@ -1,3 +1,0 @@
-[$HOME/.config/vcsh/repo.d/scripts.git]
-lib = VCSH_NAME="scripts"
-include = cat $HOME/lib/vcsh/mr

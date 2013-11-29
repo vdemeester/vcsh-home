@@ -1,3 +1,0 @@
-[$HOME/.config/vcsh/repo.d/java-config.git]
-lib = VCSH_NAME="java-config"
-include = cat $HOME/lib/vcsh/mr

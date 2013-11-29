@@ -1,3 +1,0 @@
-[$HOME/.config/vcsh/repo.d/awesome-config.git]
-lib = VCSH_NAME="awesome-config"
-include = cat $HOME/lib/vcsh/mr

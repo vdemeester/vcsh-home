@@ -1,3 +1,0 @@
-[$HOME/.config/vcsh/repo.d/ruby-config.git]
-lib = VCSH_NAME="ruby-config"
-include = cat $HOME/lib/vcsh/mr

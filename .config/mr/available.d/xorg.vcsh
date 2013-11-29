@@ -1,3 +1,0 @@
-[$HOME/.config/vcsh/repo.d/xorg-config.git]
-lib = VCSH_NAME="xorg-config"
-include = cat $HOME/lib/vcsh/mr

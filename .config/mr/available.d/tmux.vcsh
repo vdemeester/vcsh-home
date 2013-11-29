@@ -1,3 +1,0 @@
-[$HOME/.config/vcsh/repo.d/tmux-config.git]
-lib = VCSH_NAME="tmux-config"
-include = cat $HOME/lib/vcsh/mr

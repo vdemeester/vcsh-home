@@ -1,3 +1,0 @@
-[$HOME/.config/vcsh/repo.d/vim-config.git]
-lib = VCSH_NAME="vim-config"
-include = cat $HOME/lib/vcsh/mr

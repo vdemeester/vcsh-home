@@ -1,3 +1,0 @@
-[$HOME/.config/vcsh/repo.d/python-config.git]
-lib = VCSH_NAME="python-config"
-include = cat $HOME/lib/vcsh/mr
