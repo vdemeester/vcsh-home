@@ -4,22 +4,22 @@ lib =
 checkout = github_clone
 
 # installable ----------------------------------------------------------------- {{{
-[src/github/sstephenson/ruby-build]
-fixups = PREFIX=$HOME ./install.sh
-skip = missing_exe rbenv
-[src/github/apenwarr/git-subtree]
-deleted = true
+#[src/github/sstephenson/ruby-build]
+#fixups = PREFIX=$HOME ./install.sh
+#skip = missing_exe rbenv
+#[src/github/apenwarr/git-subtree]
+#deleted = true
 [src/github/michaelklishin/git-wtf]
 fixups = make && sudo make install
 skip = command -v git-wtf >/dev/null || missing_exe git
-[src/github/rtomayko/shocco]
-fixups = ./configure --prefix=$HOME && make && make install
-skip = command -v shocco >/dev/null || missing_exe pygmentize
+#[src/github/rtomayko/shocco]
+#fixups = ./configure --prefix=$HOME && make && make install
+#skip = command -v shocco >/dev/null || missing_exe pygmentize
 [src/github/holman/spark]
 fixups = cp -v ./spark $HOME/bin/
 skip = command -v spark >/dev/null
-[src/github/technomancy/leiningen]
-fixups = cp -v ./bin/lein $HOME/bin/
+#[src/github/technomancy/leiningen]
+#fixups = cp -v ./bin/lein $HOME/bin/
 [src/github/kennethreitz/autoenv]
 fixups=cp -v ./activate.sh $HOME/.sh/hook/shenv.post/autoenv
 # vim:filetype=sh foldmethod=marker expandtab shiftwidth=4
