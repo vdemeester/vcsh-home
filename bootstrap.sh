@@ -73,7 +73,7 @@ log "Writing initial hooks: $(tput bold)"
 # This is very useful for the vcsh-enabled repository. I can document them with
 # a README file so that other people can know what it does, but I don't want
 # them to conflict when beeing used.
-name="post-setup.00-checkSparseCheckout"
+name="pre-upgrade.00-checkSparseCheckout"
 cat > $HOOK_A/$name << HOOK
 #!/bin/sh
 if ! test "\$(git config core.sparseCheckout)" = "true"; then
@@ -84,7 +84,7 @@ ln -s $HOOK_A/$name $HOOK_D/$name
 chmod +x $HOOK_A/$name
 echo "   $name"
 # vcsh hook for excluding README{,.md} using git sparseCheckout
-name="post-setup.01-defaultsparsecheckout"
+name="pre-upgrade.01-defaultsparsecheckout"
 cat > $HOOK_A/$name << HOOK
 #!/bin/sh
 if ! test $(grep $name \$GIT_DIR/info/sparse-checkout); then
@@ -98,7 +98,7 @@ chmod +x $HOOK_A/$name
 ln -s $HOOK_A/$name $HOOK_D/$name
 echo "   $name"
 # vcsh hook for excluding README{,.md} using git sparseCheckout
-name="post-setup.01-READMEsparseCheckout"
+name="pre-upgrade.02-READMEsparseCheckout"
 cat > $HOOK_A/$name << HOOK
 #!/bin/sh
 if ! test $(grep $name \$GIT_DIR/info/sparse-checkout); then
@@ -113,7 +113,7 @@ chmod +x $HOOK_A/$name
 ln -s $HOOK_A/$name $HOOK_D/$name
 echo "   $name"
 # vcsh hook for excluding .gitignore using git sparseCheckout
-name="post-setup.01-GitignoresparseCheckout"
+name="pre-upgrade.02-GitignoresparseCheckout"
 cat > $HOOK_A/$name << HOOK
 #!/bin/sh
 if ! test $(grep $name \$GIT_DIR/info/sparse-checkout); then
@@ -129,35 +129,14 @@ echo "   $name"
 echo "$(tput sgr0)"
 # * Clone the vcsh-home repository
 log "Cloning vcsh-home"
-vcsh clone git://nofau.lt/vincent/vcsh-home.git vcsh-home
+vcsh clone git://github.com/vdemeester/vcsh-home.git vcsh-home
 
 # Running mr in interactive mode on the most important one
 log "Getting sh-config first"
-mr -i -d .config/vcsh/repo.d/sh-config.git u
+vcsh  clone git://github.com/vdemeester/sh-config.git sh-config
 
-# Ask for _enable right now_ repository
-log "Additionnal configuration (name separated by space)$(tput bold)"
-read ADDITIONNALS
-for file in $ADDITIONNALS; do
-    if test -f $HOME/.config/mr/available.d/$f.vcsh; then
-        ln -s $HOME/.config/mr/available.d/$f.vcsh $HOME/.config/mr/config.d/$f.vcsh
-    else
-        echo "   skipping $f"
-    fi
-done
-# Ask for private repository
-log "Private config repository (name separated by space)$(tput bold)"
-read PRIVATE
-cat > $HOME/.config/mr/available.d/private.vcsh << EOF
-[\$HOME/.config/vcsh/repo.d/private-config.git]
-lib = VCSH_NAME="private-config"
-    VCSH_UPSTREAM_PATH="private/vincent"
-    GIT_PROTOCOL=ssh://
-include = cat $HOME/lib/vcsh/mr
-EOF
-ln -s $HOME/.config/mr/available.d/private.vcsh $HOME/.config/mr/config.d/private.vcsh
 # Update in a new shell (benefits the sh-config)
 log "Updating everything in a new shell: $SHELL"
 $SHELL -c "mr -i -d .config u"
 # Explain the user how to add configurations
-log "That's it, you're home is now configured. \n You can add or remove configuration using vcsh and ˇˇ$HOME/.config/mr/config.dˇˇ folder."
+log "That's it, you're home is now configured. \n You can add or remove configuration using vcsh."
