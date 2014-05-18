@@ -36,6 +36,21 @@ A branch is made for *bootstraping* the default configuration (with the vcsh hoo
 If you like *on-liner command*, here is one for you.
 
     $ bash < <(curl -s "https://raw.github.com/vdemeester/vcsh-home/bootstrap/bootstrap.sh")
+    
+# How it is supposed to work
+
+As previously said, this repository is kind of a skeleton for all of  my others configuration
+repositories. The idea is :
+
+* You *bootstrap* this one (a little more stuff to do than just a ``git clone``).
+* Then you clone other repositories with vcsh (``vcsh clone git://github.com/vdemeester/sh-config`` for example).
+* When you want to update, you have the choice :
+  * ``vcsh pull`` to pull **just** the configuration repositories
+  * ``mr u`` to pull the configuration repositories and their potential dependencies/externals..
+
+As you can see in other configuration repository (like https://github.com/vdemeester/sh-config) there is README
+file that won't be checked out by vcsh when cloning. As explaine [there (#120)](https://github.com/RichiH/vcsh/issues/120#issuecomment-42639619), I just use together to hook feature of vcsh
+and the sparse-checkout feature of git.
 
 [1]: https://github.com/RichiH/vcsh (vcsh)
 [2]: http://kitenet.net/~joey/code/mr/ (http://kitenet.net/~joey/code/mr/)
