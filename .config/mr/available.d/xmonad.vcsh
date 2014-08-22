@@ -1,3 +1,0 @@
-[$HOME/.config/vcsh/repo.d/xmonad-config.git]
-lib = VCSH_NAME="xmonad-config"
-include = cat $HOME/lib/vcsh/mr
