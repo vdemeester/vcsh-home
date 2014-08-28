@@ -126,14 +126,14 @@ echo "   $name"
 echo "$(tput sgr0)"
 
 # * Clean some stuff (backup)
-mv $HOME/.bashrc $HOME/.bashrc.orig
-mv $HOME/.bash_profile $HOME/.bash_profile.orig
-mv $HOME/.bash_logout $HOME/.bash_logout.orig
-mv $HOME/.zshrc $HOME/.zshrc.orig
-mv $HOME/.zprofile $HOME/.zprofile.orig
-mv $HOME/.zshenv $HOME/.zshenv.orig
-mv $HOME/.zlogin $HOME/.zlogin.orig
-mv $HOME/.zlogout $HOME/.zlogout.orig
+test -f $HOME/.bashrc && mv $HOME/.bashrc $HOME/.bashrc.orig
+test -f $HOME/.bash_profile && mv $HOME/.bash_profile $HOME/.bash_profile.orig
+test -f $HOME/.bash_logout && mv $HOME/.bash_logout $HOME/.bash_logout.orig
+test -f $HOME/.zshrc && mv $HOME/.zshrc $HOME/.zshrc.orig
+test -f $HOME/.zprofile && mv $HOME/.zprofile $HOME/.zprofile.orig
+test -f $HOME/.zshenv && mv $HOME/.zshenv $HOME/.zshenv.orig
+test -f $HOME/.zlogin && mv $HOME/.zlogin $HOME/.zlogin.orig
+test -f $HOME/.zlogout && mv $HOME/.zlogout $HOME/.zlogout.orig
 
 # * Clone the vcsh-home repository
 log "Cloning vcsh-home"
