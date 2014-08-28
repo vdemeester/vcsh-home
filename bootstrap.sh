@@ -13,9 +13,6 @@
 # I use git for eveything, even my documents, pictures or music library. But
 # for these, you will need git-annex too.
 #
-# This script need user input for customizing workflow and getting private 
-# stuff.
-#
 SELF="$(basename $0)"
 
 # The most important line in any shell program.
@@ -127,6 +124,17 @@ chmod +x $HOOK_A/$name
 ln -s $HOOK_A/$name $HOOK_D/$name
 echo "   $name"
 echo "$(tput sgr0)"
+
+# * Clean some stuff (backup)
+mv $HOME/.bashrc $HOME/.bashrc.orig
+mv $HOME/.bash_profile $HOME/.bash_profile.orig
+mv $HOME/.bash_logout $HOME/.bash_logout.orig
+mv $HOME/.zshrc $HOME/.zshrc.orig
+mv $HOME/.zprofile $HOME/.zprofile.orig
+mv $HOME/.zshenv $HOME/.zshenv.orig
+mv $HOME/.zlogin $HOME/.zlogin.orig
+mv $HOME/.zlogout $HOME/.zlogout.orig
+
 # * Clone the vcsh-home repository
 log "Cloning vcsh-home"
 vcsh clone git://github.com/vdemeester/vcsh-home.git vcsh-home
