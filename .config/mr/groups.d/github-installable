@@ -10,7 +10,7 @@ checkout = github_clone
 #[src/github/apenwarr/git-subtree]
 #deleted = true
 [src/github/michaelklishin/git-wtf]
-fixups = make && sudo make install
+fixups = make && DESTDIR=$HOME/bin/ make install
 skip = command -v git-wtf >/dev/null || missing_exe git
 #[src/github/rtomayko/shocco]
 #fixups = ./configure --prefix=$HOME && make && make install
