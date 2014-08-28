@@ -145,6 +145,6 @@ vcsh  clone git://github.com/vdemeester/sh-config.git sh-config
 
 # Update in a new shell (benefits the sh-config)
 log "Updating everything in a new shell: $SHELL"
-$SHELL -c "mr -i -d .config u"
+test -z "$SKIP_MRI" && $SHELL -c "mr -i -d .config u"
 # Explain the user how to add configurations
 log "That's it, you're home is now configured. \n You can add or remove configuration using vcsh."
