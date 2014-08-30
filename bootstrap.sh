@@ -103,6 +103,7 @@ if ! test $(grep $name \$GIT_DIR/info/sparse-checkout); then
 #/ from $name
 !README
 !README.md
+!README.org
 EOF
 fi
 HOOK
