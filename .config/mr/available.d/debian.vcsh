@@ -1,3 +1,0 @@
-[$HOME/.config/vcsh/repo.d/debian-config.git]
-lib = VCSH_NAME="debian-config"
-include = cat $HOME/lib/vcsh/mr

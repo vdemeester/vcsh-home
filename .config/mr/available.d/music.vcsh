@@ -1,3 +1,0 @@
-[$HOME/.config/vcsh/repo.d/music-config.git]
-lib = VCSH_NAME="music-config"
-include = cat $HOME/lib/vcsh/mr

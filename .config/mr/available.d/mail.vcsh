@@ -1,3 +1,0 @@
-[$HOME/.config/vcsh/repo.d/mail-config.git]
-lib = VCSH_NAME="mail-config"
-include = cat $HOME/lib/vcsh/mr
