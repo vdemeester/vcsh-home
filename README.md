@@ -26,10 +26,6 @@ available for sid, wheezy and in the [squeeze-backports](http://backports-master
 
     # apt-get install -t squeeze-backports mr vcsh
 
-<del>This repository currently depend on the `hook_support` branch of my vcsh fork
-on github. Maybe someday it'll be merged upstream. The master branch of my fork
-is merge with the `hook_support`.</del>
-
 # Using it
 
 A branch is made for *bootstraping* the default configuration (with the vcsh hooks, etc…).
