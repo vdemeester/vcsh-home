@@ -1,0 +1,11 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  override:
+    - docker build -t vcsh-home-test .
+
+test:
+  override:
+    - docker run -ti vcsh-home-test sh -c "bash < <(curl -s 'https://raw.github.com/vdemeester/vcsh-home/bootstrap/bootstrap.sh')"
