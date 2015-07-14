@@ -22,5 +22,5 @@ crontab_cfg_post_d() {
     fi
 }
 # }}}
-crontab_cfg_post_d
+command -v crontab && crontab_cfg_post_d
 # vim:filetype=sh foldmethod=marker
