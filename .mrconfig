@@ -2,7 +2,7 @@
 
 [DEFAULT]
 git_gc = git gc "$@"
-jobs = 5
+# jobs = 5
 include =
     # Helper method to includes files
     include_files() {
