@@ -157,6 +157,23 @@ HOOK
 chmod +x $HOOK_A/$name
 ln -s $HOOK_A/$name $HOOK_D/$name
 echo "   $name"
+# vcsh hook for excluding .gitignore using git sparseCheckout
+name="pre-upgrade.03-buildsparseCheckout"
+cat > $HOOK_A/$name << HOOK
+#!/bin/sh
+if ! test $(grep $name \$GIT_DIR/info/sparse-checkout); then
+    cat >> \$GIT_DIR/info/sparse-checkout << EOF
+#/ from $name
+!Dockerfile
+!Dockerfile*
+!circle.yml
+!.travis.yml
+EOF
+fi
+HOOK
+chmod +x $HOOK_A/$name
+ln -s $HOOK_A/$name $HOOK_D/$name
+echo "   $name"
 echo "$(tput sgr0)"
 
 # * Clean some stuff (backup)
@@ -179,7 +196,9 @@ log "Getting sh-config first"
 vcsh  clone git://github.com/vdemeester/sh-config.git sh-config
 
 # Update in a new shell (benefits the sh-config)
+test -z "$SHELL" && SHELL=/usr/bin/zsh
 log "Updating everything in a new shell: $SHELL"
-test -z "$SKIP_MRI" && $SHELL -c "mr -i -d .config u"
+#test -z "$SKIP_MRI" && $SHELL -c "mr -i -d .config u"
+test -z "$SKIP_MRI" && $SHELL -c "mr -d .config u"
 # Explain the user how to add configurations
 log "That's it, you're home is now configured. \n You can add or remove configuration using vcsh."
