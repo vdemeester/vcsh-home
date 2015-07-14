@@ -1,0 +1,12 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  override:
+    - docker info
+    - docker build -t vcsh-home-test .
+
+test:
+  override:
+    - docker run -ti vcsh-home-test

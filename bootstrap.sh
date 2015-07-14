@@ -1,6 +1,6 @@
 #!/bin/sh
-# This is my *vcsh-home* bootstrap file. 
-# To make a long story short, this script will initialize my home directory 
+# This is my *vcsh-home* bootstrap file.
+# To make a long story short, this script will initialize my home directory
 # with share configuration in a new machine.
 #
 # Behind the scene, there is three required peice of software (available from
@@ -37,6 +37,16 @@ warn() {
     }
     echo $ECHO_ARGS "$(tput sgr0)$(tput setaf 3)<$(tput bold)<$(tput sgr0) $*"
 }
+# *fatal*: a wrapper of echo to print stuff in a more colorful way, error
+fatal () {
+    test "$1" = "-n" && {
+        ECHO_ARGS="-n"
+        shift
+    }
+    echo $ECHO_ARGS "$(tput sgr0)$(tput setaf 9)<$(tput bold)<$(tput sgr0) $*" >&2
+    exit $2
+}
+
 # *check_cmd* : check a command and fail if not present
 check_cmd() {
     command -v $1 >/dev/null && {
@@ -51,8 +61,31 @@ check_cmd() {
 # First, we check the precense of essential tools (git, vcsh, mr)
 log "Checking needed commands :$(tput bold)"
 check_cmd git
-check_cmd mr
-check_cmd vcsh
+
+test -z "$HOME" && fatal '$HOME not set; exiting' 1
+
+mkdir $HOME/tmp
+cd $HOME/tmp
+
+test -z "$HTTP_GET" && command -v wget >/dev/null && HTTP_GET='wget -nv'
+test -z "$HTTP_GET" && command -v curl >/dev/null && HTTP_GET='curl -s -S -O'
+test -z "$HTTP_GET" && fatal 'Unable to find wget or curl'
+
+echo "$SELF: bootstrapping vcsh and mr with '$HTTP_GET'"
+
+vcsh_root='https://raw.github.com/vdemeester/vcsh-home/master'
+
+echo $HTTP_GET $vcsh_root/bin/vcsh
+$HTTP_GET $vcsh_root/bin/vcsh
+echo $HTTP_GET $vcsh_root/bin/mr
+$HTTP_GET $vcsh_root/bin/mr
+
+
+chmod 755 mr vcsh
+
+cd $HOME
+
+export PATH=$HOME/tmp:$PATH
 
 # Next, we'll prepare for the initial bootstrap. It is basically :
 # * Look at ``HOOK_D`` and ``HOOK_A`` variable if already defined
@@ -127,6 +160,7 @@ echo "   $name"
 echo "$(tput sgr0)"
 
 # * Clean some stuff (backup)
+test -f $HOME/.profile && mv $HOME/.profile $HOME/.profile.orig
 test -f $HOME/.bashrc && mv $HOME/.bashrc $HOME/.bashrc.orig
 test -f $HOME/.bash_profile && mv $HOME/.bash_profile $HOME/.bash_profile.orig
 test -f $HOME/.bash_logout && mv $HOME/.bash_logout $HOME/.bash_logout.orig
