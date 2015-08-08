@@ -73,13 +73,12 @@ test -z "$HTTP_GET" && fatal 'Unable to find wget or curl'
 
 echo "$SELF: bootstrapping vcsh and mr with '$HTTP_GET'"
 
-vcsh_root='https://raw.github.com/vdemeester/vcsh-home/master'
+vcsh_root='https://raw.githubusercontent.com/vdemeester/vcsh-home/master'
 
 echo $HTTP_GET $vcsh_root/bin/vcsh
 $HTTP_GET $vcsh_root/bin/vcsh
 echo $HTTP_GET $vcsh_root/bin/mr
 $HTTP_GET $vcsh_root/bin/mr
-
 
 chmod 755 mr vcsh
 
