@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # {{{ crontab
 crontab_cfg_post_d() {
     local confdir=$HOME/.config/cron
