@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 mr "$@" 2>&1 | pytee.py \
         --regex '^mr (status|update|push): /' \

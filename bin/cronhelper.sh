@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # cronhelper.sh
 # Author: Jordan Sissel
 # License: BSD

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 # mr wrapper that work only .config folders
 if test "$1" = "-i"; then
     mr -d $HOME/.config -i $2
